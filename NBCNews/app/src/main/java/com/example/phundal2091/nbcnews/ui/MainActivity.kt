@@ -18,6 +18,7 @@ import com.example.phundal2091.nbcnews.network.RetrofitProvider
 import com.example.phundal2091.nbcnews.response.ItemsResponse
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), IMainViewHandler {
     var progressDialog : ProgressDialog? = null
@@ -46,7 +47,6 @@ class MainActivity : AppCompatActivity(), IMainViewHandler {
         val mediaController : IMediaController = MediaController(this)
         val newsContentViewRecycler : NewsContentViewRecycler = NewsContentViewRecycler(this, items, mediaController)
         val layoutManager : StaggeredGridLayoutManager = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
-        val recyclerView : RecyclerView = findViewById(R.id.recyclerView)
         recyclerView.adapter = newsContentViewRecycler
         recyclerView.layoutManager = layoutManager
 
