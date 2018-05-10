@@ -5,7 +5,6 @@ package com.example.phundal2091.nbcnews.constants
  */
 class Constants {
     companion object {
-        val saved_api_key = "api_key"
         val article = "article"
         val url_key_extra = "url_key_extra"
         val video_summary_key_extra = "video_summary_key_extra"
