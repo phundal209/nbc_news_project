@@ -10,4 +10,6 @@ import com.example.phundal2091.nbcnews.response.ItemsResponse
 interface IMainViewHandler {
     fun callApi(apiService: IApiService, savedInstanceState: Bundle?)
     fun bindRecyclerView(items : List<ItemsResponse>?)
+    fun showProgress()
+    fun hideProgress()
 }

@@ -3,4 +3,6 @@
     <string name="api_error_message">error while making api call</string>
     <string name="play_video">PLAY VIDEO</string>
     <string name="view_slideshow">Tap in to view slideshow</string>
+    <string name="api_loading_title">Please wait</string>
+    <string name="api_loading_message">We are working on getting your news</string>
 </resources>
