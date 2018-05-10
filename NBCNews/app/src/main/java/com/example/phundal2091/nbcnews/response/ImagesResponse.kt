@@ -11,5 +11,4 @@ data class ImagesResponse(@SerializedName("id")  val _id : String?,
                           @SerializedName("published")  val _published : String?,
                           @SerializedName("caption")  val _caption : String?,
                           @SerializedName("copyright")  val _copyright : String?,
-                          @SerializedName("graphic")  val _graphic : String?) {
-}
+                          @SerializedName("graphic")  val _graphic : String?)

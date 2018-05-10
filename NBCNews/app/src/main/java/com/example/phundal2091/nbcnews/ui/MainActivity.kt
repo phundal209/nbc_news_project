@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity(), IMainViewHandler {
             }
 
             override fun onCallFailed(throwable: Throwable) {
-                Log.d(NewsRepository::class.java.simpleName, "error", throwable)
+                Log.d(NewsRepository::class.java.simpleName, getString(R.string.api_error_message), throwable)
                 hideProgress()
             }
         })

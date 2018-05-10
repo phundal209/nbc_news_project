@@ -15,6 +15,7 @@ import com.stfalcon.frescoimageviewer.ImageViewer
  * Created by phundal2091 on 5/10/18.
  */
 class MediaController(val context : Context) : IMediaController {
+
     override fun buildImageViewer(data: List<ImagesResponse>?, startPosition: Int?) {
         if(startPosition != null) {
             ImageViewer.Builder(context, data)
@@ -29,7 +30,7 @@ class MediaController(val context : Context) : IMediaController {
     }
 
     override fun playVideo(url : String?, videoView: VideoView) {
-        var uri : Uri = Uri.parse(url)
+        val uri : Uri = Uri.parse(url)
         videoView.setMediaController(MediaController(context))
         videoView.setVideoURI(uri)
         videoView.setOnPreparedListener({

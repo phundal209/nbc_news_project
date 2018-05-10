@@ -26,9 +26,11 @@ class ArticleViewAdapter(val context: Context, val listOfItems : List<ItemsRespo
         var articleItem = listOfItems?.get(position)
         holder?.headline?.text = articleItem?._headline
         holder?.itemView?.setOnClickListener {
-            var intent : Intent = Intent(Intent.ACTION_VIEW);
-                intent.data = Uri.parse(articleItem?._url)
+            if (articleItem?._url != null) {
+                var intent: Intent = Intent(Intent.ACTION_VIEW);
+                intent.data = Uri.parse(articleItem._url)
                 context.startActivity(intent)
+            }
         }
     }
 

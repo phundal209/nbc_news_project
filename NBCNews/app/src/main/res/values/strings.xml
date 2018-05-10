@@ -8,4 +8,7 @@
     <string name="breaking_news">Breaking News</string>
     <string name="videos_to_watch">Watch now</string>
     <string name="slideshow">Slideshow</string>
+    <string name="no_breaking_news_now">There is no breaking news right now!</string>
+    <string name="article">article</string>
+    <string name="video">video</string>
 </resources>

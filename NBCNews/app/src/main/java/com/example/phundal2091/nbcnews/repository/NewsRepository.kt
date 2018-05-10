@@ -35,15 +35,19 @@ class NewsRepository(val apiService: IApiService, val context: Context) : INewsR
     override fun getListByType(itemsResponses : List<ItemsResponse>, type : news_type) : List<ItemsResponse> {
         val listOfTypedResponse = mutableListOf<ItemsResponse>()
         itemsResponses
-                .filter { it._type?.equals(type.type)!! }
+                .filter { it._type?.toLowerCase().equals(context.getString(type.typeId).toLowerCase())!! }
                 .forEach { listOfTypedResponse.add(it) }
+        if (listOfTypedResponse.size == 0) {
+            val itemsResponseManual = ItemsResponse(null, null, null, context.getString(R.string.no_breaking_news_now), null, null, null, null, null, null, null, null, null)
+            listOfTypedResponse.add(itemsResponseManual)
+        }
         return listOfTypedResponse
     }
 
-    enum class news_type(val type : String) {
-        ARTICLE("article"),
-        VIDEO("video"),
-        SLIDESHOW("slideshow")
+    enum class news_type(val typeId : Int) {
+        ARTICLE(R.string.article),
+        VIDEO(R.string.video),
+        SLIDESHOW(R.string.slideshow)
 
 
     }

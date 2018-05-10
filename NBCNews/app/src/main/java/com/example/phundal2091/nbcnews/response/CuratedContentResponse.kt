@@ -10,5 +10,4 @@ data class CuratedContentResponse(@SerializedName("id")  val _id : String?,
                                   @SerializedName("tease")  val _tease : String?,
                                   @SerializedName("header") val _header : String?,
                                   @SerializedName("subHeader") val _subHeader : String?,
-                                  @SerializedName("items") val _items : List<ItemsResponse>?) {
-}
+                                  @SerializedName("items") val _items : List<ItemsResponse>?)

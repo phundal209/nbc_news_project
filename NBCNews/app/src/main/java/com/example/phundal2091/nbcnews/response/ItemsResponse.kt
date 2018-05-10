@@ -17,5 +17,4 @@ data class ItemsResponse(@SerializedName("id")  val _id : String?,
                          @SerializedName("videoUrl")  val _videoUrl : String?,
                          @SerializedName("breaking")  val _breaking : Boolean?,
                          @SerializedName("preview")  val _preview : String?,
-                         @SerializedName("images") val  _images : List<ImagesResponse>?) {
-}
+                         @SerializedName("images") val  _images : List<ImagesResponse>?)
