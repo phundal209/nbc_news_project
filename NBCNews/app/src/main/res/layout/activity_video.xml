@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_video"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.phundal2091.nbcnews.ui.VideoActivity">
+
+    <VideoView
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:id="@+id/videoView"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/summary"
+        android:layout_below="@+id/videoView"
+        android:lineSpacingExtra="4dp"
+        android:layout_marginTop="4dp"
+        android:textColor="@color/black"
+        android:textStyle="italic"
+        android:maxLines="4"
+        android:ellipsize="end"
+        tools:text="AlterEgo is a prototype headset that allows for silent and seamless communication between people and their computing devices. It's able to interpret “silent speech” and was developed by researchers at the MIT Media Lab."/>
+
+</RelativeLayout>

@@ -13,12 +13,12 @@ import com.example.phundal2091.nbcnews.network.ApiService
 import com.example.phundal2091.nbcnews.network.IApiService
 import com.example.phundal2091.nbcnews.network.IRetrofitProvider
 import com.example.phundal2091.nbcnews.network.RetrofitProvider
+import com.example.phundal2091.nbcnews.repository.INewsRepository
+import com.example.phundal2091.nbcnews.repository.NewsRepository
 import com.example.phundal2091.nbcnews.response.ItemsResponse
 import com.example.phundal2091.nbcnews.ui.adapters.ArticleViewAdapter
 import com.example.phundal2091.nbcnews.ui.adapters.SlideshowViewAdapter
 import com.example.phundal2091.nbcnews.ui.adapters.VideoViewAdapter
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), IMainViewHandler {
@@ -29,7 +29,28 @@ class MainActivity : AppCompatActivity(), IMainViewHandler {
         setContentView(R.layout.activity_main)
         val retrofitProvider : IRetrofitProvider = RetrofitProvider()
         val apiService : IApiService = ApiService(retrofitProvider)
-        callApi(apiService, savedInstanceState)
+        val newsRepository : INewsRepository = NewsRepository(apiService = apiService, context = this)
+        bindNewsFromRepository(newsRepository)
+    }
+
+    fun bindNewsFromRepository(newsRepository: INewsRepository) {
+        showProgress()
+        newsRepository.callApi(object : NewsRepository.OnNetworkCallback {
+            override fun onCallSuccess(itemsResponse: List<ItemsResponse>) {
+                val articleList = newsRepository.getListByType(itemsResponse, NewsRepository.news_type.ARTICLE)
+                val videoList = newsRepository.getListByType(itemsResponse, NewsRepository.news_type.VIDEO)
+                val slideshowList = newsRepository.getListByType(itemsResponse, NewsRepository.news_type.SLIDESHOW)
+                bindArticles(articleList)
+                bindVideos(videoList)
+                bindSlideshows(slideshowList)
+                hideProgress()
+            }
+
+            override fun onCallFailed(throwable: Throwable) {
+                Log.d(NewsRepository::class.java.simpleName, "error", throwable)
+                hideProgress()
+            }
+        })
     }
 
     override fun showProgress() {
@@ -65,33 +86,5 @@ class MainActivity : AppCompatActivity(), IMainViewHandler {
         val layoutManager : LinearLayoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         slideshowRecycler.adapter = newsContentViewRecycler
         slideshowRecycler.layoutManager = layoutManager
-    }
-
-
-    override fun callApi(apiService: IApiService, savedInstanceState: Bundle?) {
-        showProgress()
-        apiService.getCuratedContentAsync().observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
-                .onErrorReturn { throwable ->
-                    Log.d(ApiService::class.java.simpleName, getString(R.string.api_error_message), throwable)
-                    hideProgress()
-                    null
-                }
-                .subscribe {
-                    bindArticles(getListByType(it, "article"))
-                    bindVideos(getListByType(it, "video"))
-                    bindSlideshows(getListByType(it, "slideshow"))
-
-                    hideProgress()
-                }
-    }
-
-
-    fun getListByType(itemsResponses : List<ItemsResponse>, type : String) : List<ItemsResponse> {
-        val listOfTypedResponse = mutableListOf<ItemsResponse>()
-        itemsResponses
-                .filter { it._type?.equals(type)!! }
-                .forEach { listOfTypedResponse.add(it) }
-        return listOfTypedResponse
     }
 }

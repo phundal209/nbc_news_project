@@ -2,6 +2,7 @@ package com.example.phundal2091.nbcnews.media_control
 
 import android.content.Context
 import android.widget.ImageView
+import android.widget.VideoView
 import com.example.phundal2091.nbcnews.response.ImagesResponse
 
 /**
@@ -10,4 +11,5 @@ import com.example.phundal2091.nbcnews.response.ImagesResponse
 interface IMediaController {
     fun bindImage(url : String?, imageView: ImageView?)
     fun buildImageViewer(data : List<ImagesResponse>?, startPosition : Int?)
+    fun playVideo(url : String?, videoView: VideoView)
 }
