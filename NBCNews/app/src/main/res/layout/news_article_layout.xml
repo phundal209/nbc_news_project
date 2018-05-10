@@ -6,22 +6,16 @@
     android:padding="8dp">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/black"
         android:maxWidth="250dp"
         android:lineSpacingExtra="4dp"
         android:textSize="16sp"
         android:textStyle="bold"
         tools:text="Cohen was promising access to WH, drug company official says"
-        android:id="@+id/headline"/>
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:scaleType="centerCrop"
-        android:layout_below="@+id/headline"
-        tools:src="@mipmap/ic_launcher"
-        android:id="@+id/tease"/>
+        android:id="@+id/headline"
+        android:layout_marginBottom="2dp"
+        android:background="?attr/selectableItemBackgroundBorderless"/>
 
 </RelativeLayout>

@@ -5,4 +5,7 @@
     <string name="view_slideshow">Tap in to view slideshow</string>
     <string name="api_loading_title">Please wait</string>
     <string name="api_loading_message">We are working on getting your news</string>
+    <string name="breaking_news">Breaking News</string>
+    <string name="videos_to_watch">Watch now</string>
+    <string name="slideshow">Slideshow</string>
 </resources>

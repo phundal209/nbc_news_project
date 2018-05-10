@@ -1,36 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="8dp">
+    android:orientation="vertical" android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+    android:background="@drawable/layout_bg">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:maxWidth="250dp"
-        android:lineSpacingExtra="4dp"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        tools:text="Cohen was promising access to WH, drug company official says"
-        android:id="@+id/headline"/>
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:scaleType="centerCrop"
-        android:layout_below="@+id/headline"
-        tools:src="@mipmap/ic_launcher"
-        android:id="@+id/tease"/>
+        android:id="@+id/videoImage"
+        tools:src="@mipmap/ic_launcher"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/playVideo"
-        android:layout_gravity="center"
-        android:layout_below="@+id/tease"
-        android:textSize="16sp"
-        android:text="@string/play_video"/>
+        android:maxWidth="150dp"
+        android:id="@+id/description"
+        android:layout_below="@+id/videoImage"
+        android:layout_marginTop="4dp"
+        android:textSize="14sp"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:textColor="@color/black"
+        tools:text="Description of the video in question"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/duration"
+        android:layout_below="@+id/description"
+        tools:text="2 minutes"
+        android:layout_marginTop="4dp"/>
 
 </RelativeLayout>

@@ -10,8 +10,54 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.phundal2091.nbcnews.ui.MainActivity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/breakingNewsHeader"
+        android:text="@string/breaking_news"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
     <android.support.v7.widget.RecyclerView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/recyclerView"/>
+        android:layout_marginTop="4dp"
+        android:layout_below="@+id/breakingNewsHeader"
+        android:id="@+id/breakingNewsRecycler"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/videos"
+        android:layout_marginTop="16dp"
+        android:text="@string/videos_to_watch"
+        android:layout_below="@+id/breakingNewsRecycler"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_below="@+id/videos"
+        android:id="@+id/videoRecycler"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/slideshow"
+        android:layout_marginTop="16dp"
+        android:text="@string/slideshow"
+        android:layout_below="@+id/videoRecycler"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/slideshowRecycler"
+        android:layout_below="@+id/slideshow"
+        android:layout_marginTop="4dp"/>
 </RelativeLayout>

@@ -1,6 +1,7 @@
 package com.example.phundal2091.nbcnews.ui
 
 import android.os.Bundle
+import android.support.v7.widget.RecyclerView
 import com.example.phundal2091.nbcnews.network.IApiService
 import com.example.phundal2091.nbcnews.response.ItemsResponse
 
@@ -9,7 +10,9 @@ import com.example.phundal2091.nbcnews.response.ItemsResponse
  */
 interface IMainViewHandler {
     fun callApi(apiService: IApiService, savedInstanceState: Bundle?)
-    fun bindRecyclerView(items : List<ItemsResponse>?)
+    fun bindArticles(items : List<ItemsResponse>?)
+    fun bindVideos(items : List<ItemsResponse>?)
+    fun bindSlideshows(items : List<ItemsResponse>?)
     fun showProgress()
     fun hideProgress()
 }

@@ -34,5 +34,4 @@ class ApiService(val retrofitProvider: IRetrofitProvider, val restClient: IRestC
         })
     }
 
-
 }

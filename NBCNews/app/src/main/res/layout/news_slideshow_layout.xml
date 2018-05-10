@@ -1,36 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="8dp">
+    android:orientation="vertical" android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+    android:background="@drawable/layout_bg">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:maxWidth="250dp"
         android:lineSpacingExtra="4dp"
+        android:maxLines="2"
+        android:ellipsize="end"
         android:textSize="16sp"
         android:textStyle="bold"
+        android:textColor="@color/black"
         tools:text="Cohen was promising access to WH, drug company official says"
         android:id="@+id/headline"/>
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:scaleType="centerCrop"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
         android:layout_below="@+id/headline"
         tools:src="@mipmap/ic_launcher"
+        android:scaleType="centerCrop"
         android:id="@+id/tease"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/viewSlideshow"
-        android:layout_gravity="center"
-        android:layout_below="@+id/tease"
-        android:textSize="16sp"
-        android:text="@string/view_slideshow"/>
-
 </RelativeLayout>
