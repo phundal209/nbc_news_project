@@ -1,6 +1,9 @@
 package com.example.phundal2091.nbcnews.ui
 
+import android.content.Context
+import android.content.Intent
 import android.media.session.MediaController
+import android.net.Uri
 import android.support.v7.widget.RecyclerView
 import android.text.Layout
 import android.util.Log
@@ -18,7 +21,7 @@ import com.example.phundal2091.nbcnews.ui.view_holders.VideoViewHolder
 /**
  * Created by phundal2091 on 5/9/18.
  */
-class NewsContentViewRecycler(val listOfItems : List<ItemsResponse>?, val mediaController: IMediaController) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class NewsContentViewRecycler(val context: Context, val listOfItems : List<ItemsResponse>?, val mediaController: IMediaController) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     companion object {
         val ARTICLE_NEWS_ITEM = "article"
         val VIDEO_NEWS_ITEM = "video"
@@ -91,11 +94,16 @@ class NewsContentViewRecycler(val listOfItems : List<ItemsResponse>?, val mediaC
         }
     }
 
-
     fun bindArticle(newsItem : ItemsResponse, holder: RecyclerView.ViewHolder?) {
         if (holder != null) {
             val articleHolder = holder as ArticleViewHolder
             bindHeadlineAndTease(newsItem, articleHolder)
+
+            holder.itemView.setOnClickListener {
+                var intent : Intent = Intent(Intent.ACTION_VIEW);
+                intent.data = Uri.parse(newsItem._url)
+                context.startActivity(intent)
+            }
         }
     }
 

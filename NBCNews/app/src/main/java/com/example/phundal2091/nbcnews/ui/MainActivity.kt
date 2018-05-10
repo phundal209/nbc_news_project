@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity(), IMainViewHandler {
 
     override fun bindRecyclerView(items: List<ItemsResponse>?) {
         val mediaController : IMediaController = MediaController(this)
-        val newsContentViewRecycler : NewsContentViewRecycler = NewsContentViewRecycler(items, mediaController)
+        val newsContentViewRecycler : NewsContentViewRecycler = NewsContentViewRecycler(this, items, mediaController)
         val layoutManager : StaggeredGridLayoutManager = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
         val recyclerView : RecyclerView = findViewById(R.id.recyclerView)
         recyclerView.adapter = newsContentViewRecycler
@@ -46,10 +46,7 @@ class MainActivity : AppCompatActivity(), IMainViewHandler {
                     null
                 }
                 .subscribe {
-                    if (it != null
-                            && it[0]._items != null) {
-                        bindRecyclerView(it[0]._items)
-                    }
+                    bindRecyclerView(it)
                 }
     }
 }

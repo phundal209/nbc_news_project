@@ -1,6 +1,7 @@
 package com.example.phundal2091.nbcnews.network
 
 import com.example.phundal2091.nbcnews.response.CuratedContentResponse
+import com.example.phundal2091.nbcnews.response.ItemsResponse
 import io.reactivex.Observable
 
 /**
@@ -8,5 +9,5 @@ import io.reactivex.Observable
  */
 interface IApiService {
 
-    fun getCuratedContentAsync() : Observable<List<CuratedContentResponse>>
+    fun getCuratedContentAsync() : Observable<List<ItemsResponse>>
 }
