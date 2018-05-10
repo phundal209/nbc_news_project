@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">NBCNews</string>
+    <string name="api_error_message">error while making api call</string>
 </resources>
