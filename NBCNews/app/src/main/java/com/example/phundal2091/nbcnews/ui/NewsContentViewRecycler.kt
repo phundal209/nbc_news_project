@@ -1,5 +1,6 @@
 package com.example.phundal2091.nbcnews.ui
 
+import android.media.session.MediaController
 import android.support.v7.widget.RecyclerView
 import android.text.Layout
 import android.util.Log
@@ -7,19 +8,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.phundal2091.nbcnews.R
+import com.example.phundal2091.nbcnews.media_control.IMediaController
 import com.example.phundal2091.nbcnews.response.ItemsResponse
 import com.example.phundal2091.nbcnews.ui.view_holders.ArticleViewHolder
+import com.example.phundal2091.nbcnews.ui.view_holders.IBaseViewHolder
 import com.example.phundal2091.nbcnews.ui.view_holders.SlideshowViewHolder
 import com.example.phundal2091.nbcnews.ui.view_holders.VideoViewHolder
 
 /**
  * Created by phundal2091 on 5/9/18.
  */
-class NewsContentViewRecycler(val listOfItems : List<ItemsResponse>?) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class NewsContentViewRecycler(val listOfItems : List<ItemsResponse>?, val mediaController: IMediaController) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     companion object {
         val ARTICLE_NEWS_ITEM = "article"
-        val VIDEO_NEWS_ITEM = "slideshow"
-        val SLIDESHOW_NEWS_ITEM = "video"
+        val VIDEO_NEWS_ITEM = "video"
+        val SLIDESHOW_NEWS_ITEM = "slideshow"
 
         val ARTICLE_NEWS_TYPE = 1
         val VIDEO_NEWS_TYPE = 2
@@ -70,11 +73,47 @@ class NewsContentViewRecycler(val listOfItems : List<ItemsResponse>?) : Recycler
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder?, position: Int) {
         val newsItem : ItemsResponse = listOfItems?.get(position)!!
-
         when (holder?.itemViewType) {
-            ARTICLE_NEWS_TYPE -> Log.d(NewsContentViewRecycler::class.java.simpleName, "article item")
-            VIDEO_NEWS_TYPE -> Log.d(NewsContentViewRecycler::class.java.simpleName, "video item")
-            SLIDESHOW_NEWS_TYPE -> Log.d(NewsContentViewRecycler::class.java.simpleName, "slideshow item")
+            ARTICLE_NEWS_TYPE -> bindArticle(newsItem, holder)
+            VIDEO_NEWS_TYPE -> bindVideo(newsItem, holder)
+            SLIDESHOW_NEWS_TYPE -> bindSlideshow(newsItem, holder)
+        }
+    }
+
+    fun bindHeadlineAndTease(newsItem: ItemsResponse, holder : IBaseViewHolder?) {
+        if (holder != null) {
+            if (newsItem._headline != null) {
+                holder.getHeadlineView().text = newsItem._headline
+            }
+            if (newsItem._tease != null) {
+                mediaController.bindImage(newsItem._tease, holder.getTeaseView())
+            }
+        }
+    }
+
+
+    fun bindArticle(newsItem : ItemsResponse, holder: RecyclerView.ViewHolder?) {
+        if (holder != null) {
+            val articleHolder = holder as ArticleViewHolder
+            bindHeadlineAndTease(newsItem, articleHolder)
+        }
+    }
+
+    fun bindVideo(newsItem: ItemsResponse, holder: RecyclerView.ViewHolder?) {
+        if (holder != null) {
+            val videoViewHolder = holder as VideoViewHolder
+            bindHeadlineAndTease(newsItem, videoViewHolder)
+        }
+    }
+
+    fun bindSlideshow(newsItem: ItemsResponse, holder: RecyclerView.ViewHolder?) {
+        if (holder != null) {
+            val slideshowViewHolder = holder as SlideshowViewHolder
+            bindHeadlineAndTease(newsItem, slideshowViewHolder)
+
+            slideshowViewHolder.itemView.setOnClickListener {
+                mediaController.buildImageViewer(newsItem._images, 0)
+            }
         }
     }
 

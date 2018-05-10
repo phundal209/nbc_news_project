@@ -4,8 +4,12 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.StaggeredGridLayoutManager
 import android.util.Log
 import com.example.phundal2091.nbcnews.R
+import com.example.phundal2091.nbcnews.constants.Constants
+import com.example.phundal2091.nbcnews.media_control.IMediaController
+import com.example.phundal2091.nbcnews.media_control.MediaController
 import com.example.phundal2091.nbcnews.network.ApiService
 import com.example.phundal2091.nbcnews.network.IApiService
 import com.example.phundal2091.nbcnews.network.IRetrofitProvider
@@ -25,10 +29,10 @@ class MainActivity : AppCompatActivity(), IMainViewHandler {
     }
 
     override fun bindRecyclerView(items: List<ItemsResponse>?) {
-        var newsContentViewRecycler : NewsContentViewRecycler = NewsContentViewRecycler(items)
-        var layoutManager : LinearLayoutManager = LinearLayoutManager(this)
-        // todo use synthetic binding, don't know why it won't find it right now?
-        var recyclerView : RecyclerView = findViewById(R.id.recyclerView)
+        val mediaController : IMediaController = MediaController(this)
+        val newsContentViewRecycler : NewsContentViewRecycler = NewsContentViewRecycler(items, mediaController)
+        val layoutManager : StaggeredGridLayoutManager = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
+        val recyclerView : RecyclerView = findViewById(R.id.recyclerView)
         recyclerView.adapter = newsContentViewRecycler
         recyclerView.layoutManager = layoutManager
 

@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">NBCNews</string>
     <string name="api_error_message">error while making api call</string>
+    <string name="play_video">PLAY VIDEO</string>
+    <string name="view_slideshow">Tap in to view slideshow</string>
 </resources>
