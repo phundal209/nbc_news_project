@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 /**
  * Created by phundal2091 on 5/9/18.
  */
-data class ImagesResponse(@SerializedName("id")  val _id : Long?,
+data class ImagesResponse(@SerializedName("id")  val _id : String?,
                           @SerializedName("url")  val _url : String?,
                           @SerializedName("headline")  val _headline : String?,
                           @SerializedName("published")  val _published : String?,

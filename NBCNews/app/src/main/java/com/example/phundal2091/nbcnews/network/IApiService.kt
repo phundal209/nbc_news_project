@@ -8,5 +8,5 @@ import io.reactivex.Observable
  */
 interface IApiService {
 
-    fun getCuratedContentAsync() : Observable<CuratedContentResponse>
+    fun getCuratedContentAsync() : Observable<List<CuratedContentResponse>>
 }

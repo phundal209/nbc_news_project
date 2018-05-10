@@ -9,5 +9,5 @@ import retrofit2.http.GET
  */
 interface IRestClient {
     @GET("/v1/query/curation/news/?size=100")
-    fun getCuratedContent(): Observable<CuratedContentResponse>
+    fun getCuratedContent(): Observable<List<CuratedContentResponse>>
 }
